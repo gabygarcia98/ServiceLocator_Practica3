@@ -36,13 +36,18 @@ public class SimpleServiceLocator implements ServiceLocator{
 
     @Override
     public Object getObject(String name) throws LocatorError {
-        if(constants.containsKey(name)){
-            return constants.get(name);
-        }else if (service.containsKey(name)){
-            Object obj = service.get(name).create(this);
-            constants.put(name, obj);
-            return obj;
+
+        if(!this.constants.containsKey(name) || !this.service.containsKey(name)){
+            throw new LocatorError((new ClassCastException()));
         }
-        throw new LocatorError((new ClassCastException()));
+
+        Object object = null;
+
+        if(this.constants.containsKey(name)){
+            object = this.constants.get(name);
+        }else if (this.service.containsKey(name)){
+            object = this.service.get(name).create(this);
+        }
+       return object;
     }
 }
