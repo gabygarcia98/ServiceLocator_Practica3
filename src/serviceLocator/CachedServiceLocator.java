@@ -31,13 +31,21 @@ public class CachedServiceLocator implements ServiceLocator {
         }
 
     }
-}
 
-   /* @Override
-    /*public Object getObject(String name) throws LocatorError {
-        if(!this.constant.containsKey(name) || !this.services.containsKey(name)){
-            throw new LocatorError((new ClassCastException()));
+   @Override
+    public Object getObject(String name) throws LocatorError {
+        if(services.containsKey(name) && constant.containsKey(name)){
+            return constant.get(name);
         }
-        if(services.containsKey(name))
-    }
+        if(services.containsKey(name)){
+            Object object = services.get(name).create(this);
+            constant.put(name, object);
+            return constant.get(name);
+
+        } else if (constant.containsKey(name)){
+            return constant.get(name);
+        }
+        throw new LocatorError((new ClassCastException()));
+
+   }
 }

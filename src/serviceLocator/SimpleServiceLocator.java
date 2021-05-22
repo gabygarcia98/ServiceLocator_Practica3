@@ -37,7 +37,7 @@ public class SimpleServiceLocator implements ServiceLocator{
     @Override
     public Object getObject(String name) throws LocatorError {
 
-        if(!this.constants.containsKey(name) || !this.service.containsKey(name)){
+        if(!this.constants.containsKey(name) && !this.service.containsKey(name)){
             throw new LocatorError((new ClassCastException()));
         }
 
