@@ -34,18 +34,15 @@ public class CachedServiceLocator implements ServiceLocator {
 
    @Override
     public Object getObject(String name) throws LocatorError {
-
         if(services.containsKey(name) && constant.containsKey(name)){
             return constant.get(name);
         } else if(services.containsKey(name)){
             Object object = services.get(name).create(this);
             constant.put(name, object);
             return constant.get(name);
-
         } else if (constant.containsKey(name)){
             return constant.get(name);
         }
         throw new LocatorError(new ClassCastException());
-
    }
 }

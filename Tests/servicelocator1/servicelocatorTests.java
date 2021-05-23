@@ -104,7 +104,7 @@ public class servicelocatorTests {
     }
 
     @Test
-    void FactoryDSimpleTest() throws LocatorError{
+    void FactoryDSimpleTest() throws LocatorError {
         simpleService.setConstant("i", 5);
         simpleService.setService("D", new FactoryD1());
 
