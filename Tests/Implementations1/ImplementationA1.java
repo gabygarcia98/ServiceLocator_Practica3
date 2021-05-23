@@ -12,4 +12,10 @@ public class ImplementationA1 implements InterfaceA {
         this.b = b;
         this.c = c;
     }
+    public InterfaceB getB(){
+        return b;
+    }
+    public InterfaceC getC(){
+        return c;
+    }
 }

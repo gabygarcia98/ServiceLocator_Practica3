@@ -19,7 +19,7 @@ public class SimpleServiceLocator implements ServiceLocator{
         if(!service.containsKey(name)){
             service.put(name, factory);
         } else {
-            throw new LocatorError((new ClassCastException()));
+            throw new LocatorError(new ClassCastException());
         }
 
     }
@@ -29,7 +29,7 @@ public class SimpleServiceLocator implements ServiceLocator{
         if(!constants.containsKey(name)){
             constants.put(name,value);
         }else{
-            throw new LocatorError((new ClassCastException()));
+            throw new LocatorError(new ClassCastException());
         }
 
     }
@@ -38,7 +38,7 @@ public class SimpleServiceLocator implements ServiceLocator{
     public Object getObject(String name) throws LocatorError {
 
         if(!this.constants.containsKey(name) && !this.service.containsKey(name)){
-            throw new LocatorError((new ClassCastException()));
+            throw new LocatorError(new ClassCastException());
         }
 
         Object object = null;
@@ -49,5 +49,7 @@ public class SimpleServiceLocator implements ServiceLocator{
             object = this.service.get(name).create(this);
         }
        return object;
+
+
     }
 }

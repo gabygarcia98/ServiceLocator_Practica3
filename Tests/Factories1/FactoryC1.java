@@ -8,7 +8,7 @@ import serviceLocator.ServiceLocator;
 public class FactoryC1 implements Factory {
     public ImplementationC1 create(ServiceLocator sl) throws LocatorError {
         try{
-            String s = (String) sl.getObject("s");
+            String s = (String) sl.getObject("S");
             return new ImplementationC1(s);
         }catch (ClassCastException ex) {
             throw new LocatorError(ex);

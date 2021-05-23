@@ -17,7 +17,7 @@ public class CachedServiceLocator implements ServiceLocator {
         if (!services.containsKey(name)) {
             services.put(name, factory);
         } else {
-            throw new LocatorError((new ClassCastException()));
+            throw new LocatorError(new ClassCastException());
         }
 
     }
@@ -27,17 +27,17 @@ public class CachedServiceLocator implements ServiceLocator {
         if (!constant.containsKey(name)) {
             constant.put(name, value);
         } else {
-            throw new LocatorError((new ClassCastException()));
+            throw new LocatorError(new ClassCastException());
         }
 
     }
 
    @Override
     public Object getObject(String name) throws LocatorError {
+
         if(services.containsKey(name) && constant.containsKey(name)){
             return constant.get(name);
-        }
-        if(services.containsKey(name)){
+        } else if(services.containsKey(name)){
             Object object = services.get(name).create(this);
             constant.put(name, object);
             return constant.get(name);
@@ -45,7 +45,7 @@ public class CachedServiceLocator implements ServiceLocator {
         } else if (constant.containsKey(name)){
             return constant.get(name);
         }
-        throw new LocatorError((new ClassCastException()));
+        throw new LocatorError(new ClassCastException());
 
    }
 }
