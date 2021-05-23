@@ -1,8 +1,8 @@
-package Factories1;
+package servicelocator1.Factories1;
 
-import Implementations1.ImplementationB1;
-import Interfaces1.InterfaceB;
-import Interfaces1.InterfaceD;
+import servicelocator1.Implementations1.ImplementationB1;
+import servicelocator1.Interfaces1.InterfaceB;
+import servicelocator1.Interfaces1.InterfaceD;
 import serviceLocator.*;
 
 public class FactoryB1 implements Factory {

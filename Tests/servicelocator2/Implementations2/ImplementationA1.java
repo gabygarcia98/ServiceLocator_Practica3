@@ -1,8 +1,7 @@
-package Implementations1;
+package servicelocator2.Implementations2;
 
-import Interfaces1.InterfaceA;
-import Interfaces1.InterfaceB;
-import Interfaces1.InterfaceC;
+import servicelocator2.Interficies.*;
+
 
 public class ImplementationA1 implements InterfaceA {
 

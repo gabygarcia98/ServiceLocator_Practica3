@@ -1,7 +1,6 @@
-package Implementations1;
+package servicelocator2.Implementations2;
 
-import Interfaces1.InterfaceB;
-import Interfaces1.InterfaceD;
+import servicelocator2.Interficies.*;
 
 public class ImplementationB1 implements InterfaceB {
     private InterfaceD d;
@@ -11,5 +10,4 @@ public class ImplementationB1 implements InterfaceB {
     public InterfaceD getD(){
         return d;
     }
-
 }

@@ -1,15 +1,17 @@
-import Factories1.FactoryA1;
-import Factories1.FactoryB1;
-import Factories1.FactoryC1;
-import Factories1.FactoryD1;
-import Implementations1.ImplementationA1;
-import Implementations1.ImplementationB1;
-import Implementations1.ImplementationC1;
-import Implementations1.ImplementationD1;
-import Interfaces1.InterfaceA;
-import Interfaces1.InterfaceB;
-import Interfaces1.InterfaceC;
-import Interfaces1.InterfaceD;
+package servicelocator1;
+
+import servicelocator1.Factories1.FactoryA1;
+import servicelocator1.Factories1.FactoryB1;
+import servicelocator1.Factories1.FactoryC1;
+import servicelocator1.Factories1.FactoryD1;
+import servicelocator1.Implementations1.ImplementationA1;
+import servicelocator1.Implementations1.ImplementationB1;
+import servicelocator1.Implementations1.ImplementationC1;
+import servicelocator1.Implementations1.ImplementationD1;
+import servicelocator1.Interfaces1.InterfaceA;
+import servicelocator1.Interfaces1.InterfaceB;
+import servicelocator1.Interfaces1.InterfaceC;
+import servicelocator1.Interfaces1.InterfaceD;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import serviceLocator.*;
@@ -69,7 +71,7 @@ public class servicelocatorTests {
 
         InterfaceD interfaceD = new ImplementationD1(5);
         ImplementationB1 implB = new ImplementationB1(interfaceD);
-        ImplementationC1 implC = new ImplementationC1("8");
+        ImplementationC1 implC = new ImplementationC1("B");
 
         simpleService.setConstant("B", implB);
         simpleService.setConstant("C", implC);
@@ -170,7 +172,7 @@ public class servicelocatorTests {
 
         InterfaceD interfaceD = new ImplementationD1(5);
         ImplementationB1 implB = new ImplementationB1(interfaceD);
-        ImplementationC1 implC = new ImplementationC1("8");
+        ImplementationC1 implC = new ImplementationC1("B");
 
         cachedService.setConstant("B", implB);
         cachedService.setConstant("C", implC);
@@ -219,5 +221,19 @@ public class servicelocatorTests {
         ImplementationC1 implc = (ImplementationC1) interfaceC;
 
         assertEquals(cachedService.getObject("S"), implc.getS());
+    }
+
+    @Test
+    void FactoryDCachedTest() throws LocatorError {
+        cachedService.setConstant("i", 5);
+        cachedService.setService("D",new FactoryD1());
+
+        InterfaceD interfaceD = (InterfaceD) cachedService.getObject("D");
+        InterfaceD interfaceD2 = (InterfaceD) cachedService.getObject("D");
+        assertEquals(interfaceD,interfaceD2);
+
+        ImplementationD1 impld = (ImplementationD1) interfaceD;
+
+        assertEquals(cachedService.getObject("i"), impld.getI());
     }
 }

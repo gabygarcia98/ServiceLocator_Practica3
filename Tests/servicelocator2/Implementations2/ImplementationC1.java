@@ -1,6 +1,6 @@
-package Implementations1;
+package servicelocator2.Implementations2;
 
-import Interfaces1.InterfaceC;
+import servicelocator2.Interficies.*;
 
 public class ImplementationC1 implements InterfaceC {
     private String s;

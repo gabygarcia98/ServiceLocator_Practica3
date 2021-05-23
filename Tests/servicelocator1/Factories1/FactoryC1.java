@@ -1,7 +1,7 @@
-package Factories1;
+package servicelocator1.Factories1;
 
 import serviceLocator.Factory;
-import Implementations1.ImplementationC1;
+import servicelocator1.Implementations1.ImplementationC1;
 import serviceLocator.LocatorError;
 import serviceLocator.ServiceLocator;
 
