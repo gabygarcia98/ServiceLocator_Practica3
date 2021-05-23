@@ -30,7 +30,6 @@ public class servicelocatorTests {
 
     @Test
     void getObjectSimpleService() throws LocatorError{
-
         simpleService.setConstant("Tournaments won", 5);
         simpleService.setConstant("player", "Agustin Tapia");
 
