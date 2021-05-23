@@ -170,17 +170,17 @@ public class servicelocatorTests {
 
     @Test
     void FactoryBCachedTest() throws LocatorError {
-        ImplementationD1 impld = new ImplementationD1(5);
+        ImplementationD1 implD = new ImplementationD1(5);
 
-        cachedService.setConstant("D", impld);
+        cachedService.setConstant("D", implD);
         cachedService.setService("B", new FactoryB1());
 
         InterfaceB interfaceB = (InterfaceB) cachedService.getObject("B");
         InterfaceB interfaceB2 = (InterfaceB) cachedService.getObject("B");
         assertEquals(interfaceB,interfaceB2);
 
-        ImplementationB1 implb = (ImplementationB1) interfaceB;
-        assertEquals(cachedService.getObject("D"), implb.getD());
+        ImplementationB1 implB = (ImplementationB1) interfaceB;
+        assertEquals(cachedService.getObject("D"), implB.getD());
     }
 
     @Test
@@ -193,9 +193,9 @@ public class servicelocatorTests {
 
         assertEquals(interfaceC, interfaceC2);
 
-        ImplementationC1 implc = (ImplementationC1) interfaceC;
+        ImplementationC1 implC = (ImplementationC1) interfaceC;
 
-        assertEquals(cachedService.getObject("S"), implc.getS());
+        assertEquals(cachedService.getObject("S"), implC.getS());
     }
 
     @Test
@@ -207,8 +207,8 @@ public class servicelocatorTests {
         InterfaceD interfaceD2 = (InterfaceD) cachedService.getObject("D");
         assertEquals(interfaceD,interfaceD2);
 
-        ImplementationD1 impld = (ImplementationD1) interfaceD;
+        ImplementationD1 implD = (ImplementationD1) interfaceD;
 
-        assertEquals(cachedService.getObject("i"), impld.getI());
+        assertEquals(cachedService.getObject("i"), implD.getI());
     }
 }

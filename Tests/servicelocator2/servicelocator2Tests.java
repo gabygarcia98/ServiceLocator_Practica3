@@ -82,16 +82,16 @@ public class servicelocator2Tests {
 
     @Test
     void FactoryBSimpleTest() throws LocatorError {
-        ImplementationD1 impld = new ImplementationD1(5);
+        ImplementationD1 implD = new ImplementationD1(5);
 
-        simpleService.setConstant(InterfaceD.class, impld);
+        simpleService.setConstant(InterfaceD.class, implD);
         simpleService.setService(InterfaceB.class, new FactoryB1_2());
 
         InterfaceB interfaceB =  simpleService.getObject(InterfaceB.class);
 
-        ImplementationB1 implb = (ImplementationB1) interfaceB;
+        ImplementationB1 implB = (ImplementationB1) interfaceB;
 
-        assertEquals(simpleService.getObject(InterfaceD.class), implb.getD());
+        assertEquals(simpleService.getObject(InterfaceD.class), implB.getD());
     }
 
     @Test
@@ -101,9 +101,9 @@ public class servicelocator2Tests {
 
         InterfaceC interfaceC =  simpleService.getObject(InterfaceC.class);
 
-        ImplementationC1 implc = (ImplementationC1) interfaceC;
+        ImplementationC1 implC = (ImplementationC1) interfaceC;
 
-        assertEquals(simpleService.getObject(String.class), implc.getS());
+        assertEquals(simpleService.getObject(String.class), implC.getS());
     }
 
     @Test
@@ -113,9 +113,9 @@ public class servicelocator2Tests {
 
         InterfaceD interfaceD = simpleService.getObject(InterfaceD.class);
 
-        ImplementationD1 impld = (ImplementationD1) interfaceD;
+        ImplementationD1 implD = (ImplementationD1) interfaceD;
 
-        assertEquals(simpleService.getObject(Integer.class), impld.getI());
+        assertEquals(simpleService.getObject(Integer.class), implD.getI());
     }
 
     //CACHED TEST
@@ -199,9 +199,9 @@ public class servicelocator2Tests {
 
         assertEquals(interfaceC, interfaceC2);
 
-        ImplementationC1 implc = (ImplementationC1) interfaceC;
+        ImplementationC1 implC = (ImplementationC1) interfaceC;
 
-        assertEquals(cachedService.getObject(String.class), implc.getS());
+        assertEquals(cachedService.getObject(String.class), implC.getS());
     }
 
     @Test
@@ -213,9 +213,9 @@ public class servicelocator2Tests {
         InterfaceD interfaceD2 = cachedService.getObject(InterfaceD.class);
         assertEquals(interfaceD,interfaceD2);
 
-        ImplementationD1 impld = (ImplementationD1) interfaceD;
+        ImplementationD1 implD = (ImplementationD1) interfaceD;
 
-        assertEquals(cachedService.getObject(Integer.class), impld.getI());
+        assertEquals(cachedService.getObject(Integer.class), implD.getI());
     }
 }
 
