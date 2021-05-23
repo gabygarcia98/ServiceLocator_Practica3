@@ -11,5 +11,4 @@ public class FactoryC1_2 implements Factory<InterfaceC> {
         String s =  sl.getObject(String.class);
         return new ImplementationC1(s);
     }
-
 }

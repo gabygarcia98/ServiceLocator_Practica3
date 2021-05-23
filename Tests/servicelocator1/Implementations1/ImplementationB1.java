@@ -11,5 +11,4 @@ public class ImplementationB1 implements InterfaceB {
     public InterfaceD getD(){
         return d;
     }
-
 }

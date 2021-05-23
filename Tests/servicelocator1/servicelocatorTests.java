@@ -19,10 +19,8 @@ import serviceLocator.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class servicelocatorTests {
-
     private ServiceLocator simpleService;
     private ServiceLocator cachedService;
-
 
     @BeforeEach
     void init() throws LocatorError {
@@ -48,7 +46,6 @@ public class servicelocatorTests {
 
     @Test
     void throwsExceptionGetObjectSimpleTest() {
-
         assertThrows(LocatorError.class, () -> simpleService.getObject("earnings"));
     }
 
@@ -68,7 +65,6 @@ public class servicelocatorTests {
 
     @Test
     void FactoryASimpleTest() throws LocatorError {
-
         InterfaceD interfaceD = new ImplementationD1(5);
         ImplementationB1 implB = new ImplementationB1(interfaceD);
         ImplementationC1 implC = new ImplementationC1("B");
@@ -82,12 +78,10 @@ public class servicelocatorTests {
         ImplementationA1 implA = (ImplementationA1) interfaceA;
         assertEquals(simpleService.getObject("B"), implA.getB());
         assertEquals(simpleService.getObject("C"), implA.getC());
-
     }
+
     @Test
     void FactoryBSimpleTest() throws LocatorError {
-
-
         ImplementationD1 impld = new ImplementationD1(5);
 
         simpleService.setConstant("D", impld);
@@ -98,12 +92,10 @@ public class servicelocatorTests {
         ImplementationB1 implb = (ImplementationB1) interfaceB;
 
         assertEquals(simpleService.getObject("D"), implb.getD());
-
     }
 
     @Test
     void FactoryCSimpleTest() throws LocatorError {
-
         simpleService.setConstant("S", "s");
         simpleService.setService("C", new FactoryC1());
 
@@ -116,7 +108,6 @@ public class servicelocatorTests {
 
     @Test
     void FactoryDSimpleTest() throws LocatorError{
-
         simpleService.setConstant("i", 5);
         simpleService.setService("D", new FactoryD1());
 
@@ -127,13 +118,9 @@ public class servicelocatorTests {
         assertEquals(simpleService.getObject("i"), impld.getI());
     }
 
-
-    //CACHED TESTS
-
-
+    // CACHED TESTS
     @Test
     void getObjectCachedTest() throws LocatorError {
-
         cachedService.setConstant("Tournaments won", 5);
         cachedService.setConstant("player", "Agustin Tapia");
 
@@ -145,12 +132,10 @@ public class servicelocatorTests {
 
         Object tournaments_won = cachedService.getObject("Tournaments won");
         assertEquals(tournaments_won, cachedService.getObject("Tournaments won"));
-
     }
 
     @Test
     void throwsExceptionGetObjectCachedTest() {
-
         assertThrows(LocatorError.class, () -> cachedService.getObject("earnings"));
     }
 
@@ -169,7 +154,6 @@ public class servicelocatorTests {
 
     @Test
     void FactoryACachedTest() throws LocatorError {
-
         InterfaceD interfaceD = new ImplementationD1(5);
         ImplementationB1 implB = new ImplementationB1(interfaceD);
         ImplementationC1 implC = new ImplementationC1("B");
@@ -187,10 +171,9 @@ public class servicelocatorTests {
         assertEquals(cachedService.getObject("B"), implA.getB());
         assertEquals(cachedService.getObject("C"), implA.getC());
     }
+
     @Test
     void FactoryBCachedTest() throws LocatorError {
-
-
         ImplementationD1 impld = new ImplementationD1(5);
 
         cachedService.setConstant("D", impld);
@@ -204,12 +187,10 @@ public class servicelocatorTests {
         ImplementationB1 implb = (ImplementationB1) interfaceB;
 
         assertEquals(cachedService.getObject("D"), implb.getD());
-
     }
 
     @Test
     void FactoryCCachedTest() throws LocatorError {
-
         cachedService.setConstant("S", "s");
         cachedService.setService("C", new FactoryC1());
 

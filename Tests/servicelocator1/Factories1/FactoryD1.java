@@ -6,9 +6,9 @@ import serviceLocator.*;
 
 public class FactoryD1 implements Factory {
     public InterfaceD create(ServiceLocator sl) throws LocatorError {
-        try{
+        try {
             return new ImplementationD1((int) sl.getObject("i"));
-        }catch (ClassCastException ex){
+        } catch (ClassCastException ex) {
             throw new LocatorError(ex);
         }
     }
