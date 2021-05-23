@@ -19,6 +19,7 @@ import serviceLocator.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class servicelocatorTests {
+
     private ServiceLocator simpleService;
     private ServiceLocator cachedService;
 
@@ -29,7 +30,7 @@ public class servicelocatorTests {
     }
 
     @Test
-    void getObjectSimpleService() throws LocatorError{
+    void getObjectSimpleService() throws LocatorError {
         simpleService.setConstant("Tournaments won", 5);
         simpleService.setConstant("player", "Agustin Tapia");
 
@@ -52,7 +53,6 @@ public class servicelocatorTests {
     void throwsExceptionSetServiceSimpleTest() throws LocatorError {
         Factory factoryA = new FactoryA1();
         simpleService.setService("A", factoryA);
-
         assertThrows(LocatorError.class, () -> simpleService.setService("A", factoryA));
     }
 
@@ -81,16 +81,15 @@ public class servicelocatorTests {
 
     @Test
     void FactoryBSimpleTest() throws LocatorError {
-        ImplementationD1 impld = new ImplementationD1(5);
+        ImplementationD1 implD = new ImplementationD1(5);
 
-        simpleService.setConstant("D", impld);
+        simpleService.setConstant("D", implD);
         simpleService.setService("B", new FactoryB1());
 
         InterfaceB interfaceB = (InterfaceB) simpleService.getObject("B");
 
-        ImplementationB1 implb = (ImplementationB1) interfaceB;
-
-        assertEquals(simpleService.getObject("D"), implb.getD());
+        ImplementationB1 implB = (ImplementationB1) interfaceB;
+        assertEquals(simpleService.getObject("D"), implB.getD());
     }
 
     @Test
@@ -100,9 +99,8 @@ public class servicelocatorTests {
 
         InterfaceC interfaceC = (InterfaceC) simpleService.getObject("C");
 
-        ImplementationC1 implc = (ImplementationC1) interfaceC;
-
-        assertEquals(simpleService.getObject("S"), implc.getS());
+        ImplementationC1 implC = (ImplementationC1) interfaceC;
+        assertEquals(simpleService.getObject("S"), implC.getS());
     }
 
     @Test
@@ -112,9 +110,8 @@ public class servicelocatorTests {
 
         InterfaceD interfaceD = (InterfaceD) simpleService.getObject("D");
 
-        ImplementationD1 impld = (ImplementationD1) interfaceD;
-
-        assertEquals(simpleService.getObject("i"), impld.getI());
+        ImplementationD1 implD = (ImplementationD1) interfaceD;
+        assertEquals(simpleService.getObject("i"), implD.getI());
     }
 
     // CACHED TESTS
@@ -180,11 +177,9 @@ public class servicelocatorTests {
 
         InterfaceB interfaceB = (InterfaceB) cachedService.getObject("B");
         InterfaceB interfaceB2 = (InterfaceB) cachedService.getObject("B");
-
         assertEquals(interfaceB,interfaceB2);
 
         ImplementationB1 implb = (ImplementationB1) interfaceB;
-
         assertEquals(cachedService.getObject("D"), implb.getD());
     }
 
